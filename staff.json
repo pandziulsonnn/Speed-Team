@@ -1,0 +1,31 @@
+{
+  "server": "Administracja SPEED",
+  "updated_at": "26.11.2026 21:07",
+  "count": 3,
+  "members": [
+    {
+      "id": "459104693965029388",
+      "name": "!Mxteuszek",
+      "username": "mxteuszek.",
+      "avatar": "https://cdn.discordapp.com/avatars/459104693965029388/a_508ef2198be641123fbc3cc085951199.gif?size=256",
+      "role": "SPEED Team",
+      "color": "#a9c9ff"
+    },
+    {
+      "id": "462215468145704961",
+      "name": "speed",
+      "username": "pbxgang",
+      "avatar": "https://cdn.discordapp.com/guilds/1410778740543455324/users/462215468145704961/avatars/43d27df53cf300ce17a6ca9de35771ce.png?size=256",
+      "role": "SPEED Team",
+      "color": "#a9c9ff"
+    },
+    {
+      "id": "302940845089357835",
+      "name": "᲼᲼᲼᲼᲼",
+      "username": "andrzej0091",
+      "avatar": "https://cdn.discordapp.com/avatars/302940845089357835/9b1c6c52008d950aa82b4f285ec05693.png?size=256",
+      "role": "SPEED Team",
+      "color": "#a9c9ff"
+    }
+  ]
+}
