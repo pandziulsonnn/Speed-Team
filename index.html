@@ -1,1 +1,288 @@
-<h1>SPEED</h1>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administracja SPEED — FiveM</title>
+  <style>
+    :root {
+      --bg-main: #0c0d10;
+      --bg-card: #15171e;
+      --bg-card-hover: #1b1e28;
+      --border-subtle: #252834;
+      --red-main: #e61e2a;
+      --red-glow: #ff3b47;
+      --text-main: #ffffff;
+      --text-muted: #8b909e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(230, 30, 42, 0.14), transparent 38%),
+        radial-gradient(circle at 85% 90%, rgba(230, 30, 42, 0.10), transparent 40%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 3px solid var(--red-main);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-bar {
+      width: 5px;
+      height: 44px;
+      background: var(--red-main);
+      border-radius: 4px;
+      box-shadow: 0 0 14px rgba(230, 30, 42, 0.7);
+    }
+
+    .brand h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .brand p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      background: #1d202a;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+
+    .meta-pill strong {
+      color: var(--text-main);
+    }
+
+    .connect-btn {
+      text-decoration: none;
+      background: var(--red-main);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 16px rgba(230, 30, 42, 0.35);
+    }
+
+    .connect-btn:hover {
+      background: var(--red-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(230, 30, 42, 0.55);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 26px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 45%;
+      height: 3px;
+      background: var(--red-main);
+      border-radius: 0 0 4px 4px;
+      opacity: 0.75;
+      transition: width 0.22s ease, opacity 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+      border-color: var(--red-main);
+      box-shadow: 0 10px 28px rgba(230, 30, 42, 0.22);
+    }
+
+    .card:hover::before {
+      width: 85%;
+      opacity: 1;
+    }
+
+    .avatar-wrap {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--red-glow), #4a0a0e);
+      box-shadow: 0 0 18px rgba(230, 30, 42, 0.3);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #222530;
+      display: block;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      word-break: break-word;
+    }
+
+    .username {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 5px 13px;
+      border-radius: 999px;
+      background: rgba(230, 30, 42, 0.15);
+      color: var(--red-glow);
+      border: 1px solid rgba(230, 30, 42, 0.45);
+    }
+
+    .status-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-bar"></div>
+        <div>
+          <h1>Administracja SPEED</h1>
+          <p>Oficjalny skład zespołu SPEED Team</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="meta-pill" id="meta-info">Ładowanie ekipy...</div>
+        <a class="connect-btn" href="https://cfx.re/join/4d7mz8" target="_blank" rel="noopener">🎮 Połącz z serwerem</a>
+      </div>
+    </header>
+
+    <main id="staff-content">
+      <div class="status-box">Pobieranie aktualnej listy administracji z Discorda...</div>
+    </main>
+  </div>
+
+  <script>
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    async function loadStaff() {
+      const content = document.getElementById("staff-content");
+      const meta = document.getElementById("meta-info");
+
+      try {
+        const res = await fetch("./staff.json?t=" + Date.now());
+        if (!res.ok) throw new Error("Brak pliku staff.json");
+        const data = await res.json();
+
+        const members = Array.isArray(data.members) ? data.members : [];
+        meta.innerHTML = `Skład: <strong>${members.length}</strong> • Aktualizacja: <strong>${escapeHtml(data.updated_at || "-")}</strong>`;
+
+        if (members.length === 0) {
+          content.innerHTML = `<div class="status-box">Brak przypisanych członków w roli SPEED Team.</div>`;
+          return;
+        }
+
+        const cardsHtml = members.map(m => `
+          <article class="card">
+            <div class="avatar-wrap">
+              <img class="avatar" src="${escapeHtml(m.avatar)}" alt="${escapeHtml(m.name)}" loading="lazy" />
+            </div>
+            <div class="name">${escapeHtml(m.name)}</div>
+            <div class="username">@${escapeHtml(m.username)}</div>
+            <span class="badge">${escapeHtml(m.role || "SPEED Team")}</span>
+          </article>
+        `).join("");
+
+        content.innerHTML = `<section class="grid">${cardsHtml}</section>`;
+      } catch (err) {
+        meta.textContent = "Oczekiwanie na synchronizację";
+        content.innerHTML = `<div class="status-box">Lista administracji nie została jeszcze zsynchronizowana przez bota (użyj <strong>/sync_ekipa</strong> na Discordzie).</div>`;
+      }
+    }
+
+    loadStaff();
+  </script>
+</body>
+</html>
