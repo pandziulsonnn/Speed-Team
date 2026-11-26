@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPEED — Serwer FiveM</title>
+  <style>
+    :root {
+      --bg-main: #0c0d10;
+      --bg-card: #15171e;
+      --bg-card-hover: #1b1e28;
+      --border-subtle: #252834;
+      --red-main: #e61e2a;
+      --red-glow: #ff3b47;
+      --text-main: #ffffff;
+      --text-muted: #8b909e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(230, 30, 42, 0.16), transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(230, 30, 42, 0.10), transparent 42%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 28px 20px 60px;
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    /* NAWIGACJA */
+    .navbar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px 24px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red-main);
+      box-shadow: 0 0 12px var(--red-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background: #1f222c;
+    }
+
+    .nav-links a.active {
+      color: #ffffff;
+      background: rgba(230, 30, 42, 0.18);
+      border: 1px solid rgba(230, 30, 42, 0.45);
+    }
+
+    .connect-btn {
+      text-decoration: none;
+      background: var(--red-main);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(230, 30, 42, 0.35);
+      display: inline-block;
+    }
+
+    .connect-btn:hover {
+      background: var(--red-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(230, 30, 42, 0.55);
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 3px solid var(--red-main);
+      border-radius: 20px;
+      padding: 46px 36px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(230, 30, 42, 0.15);
+      color: var(--red-glow);
+      border: 1px solid rgba(230, 30, 42, 0.4);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--red-glow);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .secondary-btn {
+      text-decoration: none;
+      background: #1d202a;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .secondary-btn:hover {
+      border-color: var(--red-main);
+      background: #232734;
+    }
+
+    .connect-code {
+      background: #101217;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-family: monospace;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+
+    /* SEKCJA FILARÓW SERWERA */
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--red-main);
+      padding-left: 12px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--red-main);
+      background: var(--bg-card-hover);
+    }
+
+    .feature-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a class="nav-brand" href="./index.html">
+        <span class="nav-dot"></span>
+        <span>SPEED</span>
+      </a>
+      <div class="nav-links">
+        <a href="./index.html" class="active">Strona główna</a>
+        <a href="./regulamin.html">Regulamin</a>
+        <a href="./administracja.html">Administracja</a>
+      </div>
+      <a class="connect-btn" href="https://cfx.re/join/4d7mz8" target="_blank" rel="noopener">🎮 Połącz z serwerem</a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-badge">🏁 FiveM • Pościgi &amp; Tuning</div>
+      <h1>Czym jest <span>SPEED</span>?</h1>
+      <p>
+        SPEED to prosty, dynamiczny serwer FiveM skupiony na pościgach gangsterów z policją oraz rozwijaniu samochodów.
+        Szybka jazda, ucieczki, blokady drogowe, akcje na skupach i zatrzymania to fundament naszej codziennej rozgrywki — bez zbędnego grindu i bez Pay2Win.
+      </p>
+      <div class="hero-actions">
+        <a class="connect-btn" href="https://cfx.re/join/4d7mz8" target="_blank" rel="noopener">🎮 Dołącz do gry</a>
+        <a class="secondary-btn" href="./regulamin.html">📜 Przeczytaj regulamin</a>
+        <div class="connect-code">F8: connect cfx.re/join/4d7mz8</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Główne filary rozgrywki</h2>
+    <section class="features-grid">
+      <article class="feature-card">
+        <span class="feature-icon">🔧</span>
+        <h3>Na swoje auto pracujesz</h3>
+        <p>Części do tuningu są drogie i mają realną wartość. Zarabiasz, odkładasz gotówkę i stopniowo ulepszasz swój samochód — nikt nie dostaje wszystkiego na start.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">🚔</span>
+        <h3>Pościgi i akcje na skupach</h3>
+        <p>Przejmuj Reblaxa, uciekaj przed rywalami i policją, a po zatrzymaniu licz się z mandatem <strong>$5000</strong> od funkcjonariuszy.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">🔫</span>
+        <h3>Broń to rzadkość</h3>
+        <p>Nie kupisz jej w sklepie, a policja nie dostaje jej na służbę. Zdobywasz ją wyłącznie jako rzadki drop — jeden strzał i broń staje się niezdatna do użytku.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">🎭</span>
+        <h3>Pełne zanurzenie w RP</h3>
+        <p>Zawsze pozostajesz w postaci na czacie głosowym. Sprawy techniczne, pytania o klawisze czy zgłoszenia załatwiasz wyłącznie na dedykowanych kanałach OOC.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">💸</span>
+        <h3>Zero Pay2Win</h3>
+        <p>Brak płatnych dodatków, kupowania przewagi w grze oraz płatnych unbanów. Każdy gracz ma równe szanse i wszystko zdobywa uczciwą grą.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">⛔</span>
+        <h3>Szacunek do zasad i czasu</h3>
+        <p>Stawiamy na czystą rywalizację i kulturę gry. Za poważne łamanie regulaminu nadawane są bany permanentne bez możliwości powrotu.</p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      SPEED Network • FiveM Server • Połącz się: connect cfx.re/join/4d7mz8
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regulamin — SPEED FiveM</title>
+  <style>
+    :root {
+      --bg-main: #0c0d10;
+      --bg-card: #15171e;
+      --border-subtle: #252834;
+      --red-main: #e61e2a;
+      --red-glow: #ff3b47;
+      --text-main: #ffffff;
+      --text-muted: #8b909e;
+      --text-body: #d1d5df;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(230, 30, 42, 0.14), transparent 38%),
+        radial-gradient(circle at 85% 90%, rgba(230, 30, 42, 0.10), transparent 40%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 28px 20px 60px;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; }
+
+    .navbar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px 24px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red-main);
+      box-shadow: 0 0 12px var(--red-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background: #1f222c;
+    }
+
+    .nav-links a.active {
+      color: #ffffff;
+      background: rgba(230, 30, 42, 0.18);
+      border: 1px solid rgba(230, 30, 42, 0.45);
+    }
+
+    .connect-btn {
+      text-decoration: none;
+      background: var(--red-main);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(230, 30, 42, 0.35);
+    }
+
+    .connect-btn:hover {
+      background: var(--red-glow);
+      transform: translateY(-2px);
+    }
+
+    .page-header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 3px solid var(--red-main);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .rule-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 18px;
+    }
+
+    .rule-section h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 10px;
+    }
+
+    .rule-num {
+      background: rgba(230, 30, 42, 0.18);
+      color: var(--red-glow);
+      border: 1px solid rgba(230, 30, 42, 0.45);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 8px;
+    }
+
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rule-list li {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+      padding-left: 4px;
+    }
+
+    .sub-id {
+      color: var(--red-glow);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .highlight-box {
+      background: rgba(230, 30, 42, 0.10);
+      border-left: 3px solid var(--red-main);
+      padding: 12px 16px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #f3f4f6;
+    }
+
+    .footer {
+      margin-top: 36px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a class="nav-brand" href="./index.html">
+        <span class="nav-dot"></span>
+        <span>SPEED</span>
+      </a>
+      <div class="nav-links">
+        <a href="./index.html">Strona główna</a>
+        <a href="./regulamin.html" class="active">Regulamin</a>
+        <a href="./administracja.html">Administracja</a>
+      </div>
+      <a class="connect-btn" href="https://cfx.re/join/4d7mz8" target="_blank" rel="noopener">🎮 Połącz z serwerem</a>
+    </nav>
+
+    <header class="page-header">
+      <h1>📜 Regulamin serwera SPEED</h1>
+      <p>Wejście na serwer jest równoznaczne z akceptacją poniższych zasad. Nieznajomość regulaminu nie zwalnia z odpowiedzialności.</p>
+    </header>
+
+    <section class="rule-section">
+      <h2><span class="rule-num">§1</span> Postanowienia ogólne i kultura gry</h2>
+      <ul class="rule-list">
+        <li><span class="sub-id">1.1</span> SPEED to serwer nastawiony na dynamiczne pościgi pomiędzy gangsterami a policją oraz rozwijanie samochodów.</li>
+        <li><span class="sub-id">1.2</span> Szanuj zasady oraz czas innych graczy — toksyczność, celowe psucie zabawy i utrudnianie rozgrywki są surowo karane.</li>
+        <li><span class="sub-id">1.3</span> Za łamanie regulaminu serwera nadawane są <strong>bany permanentne</strong>, bez możliwości powrotu na serwer.</li>
+        <li><span class="sub-id">1.4</span> Na serwerze obowiązuje zasada <strong>Zero Pay2Win</strong> — nie istnieją żadne płatne dodatki, kupowanie przewagi ani płatne unbany. Wszystko zdobywasz wyłącznie poprzez grę.</li>
+      </ul>
+    </section>
+
+    <section class="rule-section">
+      <h2><span class="rule-num">§2</span> Zasady RolePlay i komunikacja (IC / OOC)</h2>
+      <ul class="rule-list">
+        <li><span class="sub-id">2.1</span> Przez cały czas pobytu na serwerze masz obowiązek pozostawać w swojej postaci (IC).</li>
+        <li><span class="sub-id">2.2</span> Na czacie głosowym obowiązuje bezwzględny zakaz rozmów o klawiszach, regulaminie, administracji oraz jakichkolwiek sprawach spoza gry (OOC).</li>
+        <li><span class="sub-id">2.3</span> Do zadawania pytań technicznych i organizacyjnych służy wyłącznie wyznaczony kanał pomocy.</li>
+        <li><span class="sub-id">2.4</span> Umiej wygrać i potraf przegrać — każdą sytuację RP dogrywasz do samego końca.</li>
+        <li><span class="sub-id">2.5</span> Jeśli zauważysz, że inny gracz złamał zasady, zgłaszasz to administracji dopiero <strong>po zakończeniu akcji</strong>. Przerywanie rozgrywki kłótniami OOC oraz grożenie banem jest zabronione.</li>
+      </ul>
+    </section>
+
+    <section class="rule-section">
+      <h2><span class="rule-num">§3</span> Ekonomia, pojazdy i tuning</h2>
+      <ul class="rule-list">
+        <li><span class="sub-id">3.1</span> Na swoje auto oraz jego ulepszenia pracujesz samodzielnie — gracze nie otrzymują pełnego wyposażenia na start.</li>
+        <li><span class="sub-id">3.2</span> Części do tuningu są drogie i wymagają regularnego zarabiania, odkładania gotówki oraz stopniowego rozwijania pojazdu.</li>
+        <li><span class="sub-id">3.3</span> Zakazuje się wykorzystywania błędów gry (bugów) w celu szybszego wzbogacenia się lub ominięcia kosztów tuningu.</li>
+      </ul>
+    </section>
+
+    <section class="rule-section">
+      <h2><span class="rule-num">§4</span> Pościgi, akcja z Reblaxem i Policja</h2>
+      <ul class="rule-list">
+        <li><span class="sub-id">4.1</span> Podstawą rozgrywki na serwerze są pościgi, ucieczki, blokady policyjne oraz zatrzymania.</li>
+        <li><span class="sub-id">4.2</span> <strong>Akcja Reblax:</strong> Zadaniem graczy jest przejęcie Reblaxa i dostarczenie go na oznaczony skup przed upływem wyznaczonego czasu.</li>
+        <li><span class="sub-id">4.3</span> Podczas pościgu o Reblaxa dozwolone jest taktyczne odcinanie rywali autami.</li>
+        <li><span class="sub-id">4.4</span> <strong>Bezwzględny zakaz VDM:</strong> Nie wolno rozjeżdżać ani potrącać gracza w momencie, gdy wsiada on do samochodu (lub wysiada z niego).</li>
+        <li><span class="sub-id">4.5</span> <strong>Mandaty policyjne:</strong> Funkcjonariusze Policji po skutecznym zatrzymaniu wystawiają mandat w wysokości <strong>$5000</strong>.</li>
+      </ul>
+    </section>
+
+    <section class="rule-section">
+      <h2><span class="rule-num">§5</span> Zasady posiadania i użycia broni</h2>
+      <ul class="rule-list">
+        <li><span class="sub-id">5.1</span> Broń palna na serwerze jest dobrem rzadkim — nie można jej kupić w żadnym sklepie, a policja nie otrzymuje jej na służbę.</li>
+        <li><span class="sub-id">5.2</span> Każdy gracz (niezależnie od pełnionej roli) może zdobyć broń wyłącznie jako rzadki drop w grze.</li>
+        <li><span class="sub-id">5.3</span> Broń jest jednorazowa — <strong>jeden oddany strzał</strong> sprawia, że broń staje się całkowicie niezdatna do dalszego użytku.</li>
+        <li><span class="sub-id">5.4</span> Samo posiadanie broni nie uprawnia do otwierania ognia ani atakowania innych graczy bez wyraźnego powodu RP (zakaz RDM).</li>
+      </ul>
+      <div class="highlight-box">
+        ⚠️ Pamiętaj: na SPEED najważniejsza jest dobra zabawa z pościgów i szacunek do innych uczestników akcji.
+      </div>
+    </section>
+
+    <footer class="footer">
+      SPEED Network • Regulamin serwera FiveM
+    </footer>
+  </div>
+</body>
+</html>
