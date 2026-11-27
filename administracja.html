@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administracja SPEED — FiveM</title>
+  <title>Administracja — SPEED FiveM</title>
   <style>
     :root {
       --bg-main: #0c0d10;
@@ -291,18 +291,18 @@
         <div class="brand-bar"></div>
         <div>
           <h1>Administracja SPEED</h1>
-          <p>Oficjalny skład zespołu SPEED Team zsynchronizowany z Discordem</p>
+          <p>Oficjalny skład zespołu SPEED Team</p>
         </div>
       </div>
-      <div class="meta-pill" id="meta-info">Ładowanie ekipy...</div>
+      <div class="meta-pill" id="meta-info">Członków zespołu: —</div>
     </header>
 
     <main id="staff-content">
-      <div class="status-box">Pobieranie aktualnej listy administracji z Discorda...</div>
+      <div class="status-box">Wczytywanie składu zespołu...</div>
     </main>
 
     <footer class="footer">
-      SPEED Network • Skład ekipy odświeżany automatycznie przez bota Discord
+      SPEED Network • FiveM Server
     </footer>
   </div>
 
@@ -321,14 +321,14 @@
 
       try {
         const res = await fetch("./staff.json?t=" + Date.now());
-        if (!res.ok) throw new Error("Brak pliku staff.json");
+        if (!res.ok) throw new Error("Brak danych");
         const data = await res.json();
 
         const members = Array.isArray(data.members) ? data.members : [];
-        meta.innerHTML = `Skład: <strong>${members.length}</strong> • Aktualizacja: <strong>${escapeHtml(data.updated_at || "-")}</strong>`;
+        meta.innerHTML = `Członków zespołu: <strong>${members.length}</strong>`;
 
         if (members.length === 0) {
-          content.innerHTML = `<div class="status-box">Brak przypisanych członków w roli SPEED Team.</div>`;
+          content.innerHTML = `<div class="status-box">Obecnie brak przypisanych członków zespołu.</div>`;
           return;
         }
 
@@ -345,8 +345,8 @@
 
         content.innerHTML = `<section class="grid">${cardsHtml}</section>`;
       } catch (err) {
-        meta.textContent = "Oczekiwanie na synchronizację";
-        content.innerHTML = `<div class="status-box">Lista administracji nie została jeszcze zsynchronizowana przez bota (użyj <strong>/sync_ekipa</strong> na Discordzie).</div>`;
+        meta.innerHTML = `Członków zespołu: <strong>0</strong>`;
+        content.innerHTML = `<div class="status-box">Lista administracji jest obecnie niedostępna.</div>`;
       }
     }
 
