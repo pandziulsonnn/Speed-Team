@@ -1,13 +1,21 @@
 {
   "server": "Administracja SPEED",
-  "updated_at": "26.11.2026 21:08",
-  "count": 3,
+  "updated_at": "27.11.2026 17:21",
+  "count": 4,
   "members": [
     {
       "id": "459104693965029388",
       "name": "!Mxteuszek",
       "username": "mxteuszek.",
       "avatar": "https://cdn.discordapp.com/avatars/459104693965029388/a_508ef2198be641123fbc3cc085951199.gif?size=256",
+      "role": "SPEED Team",
+      "color": "#a9c9ff"
+    },
+    {
+      "id": "807309009597890580",
+      "name": "Capitan Panda",
+      "username": "pandziulson",
+      "avatar": "https://cdn.discordapp.com/avatars/807309009597890580/55845ab795a5b5608545e55e52af1a38.png?size=256",
       "role": "SPEED Team",
       "color": "#a9c9ff"
     },
